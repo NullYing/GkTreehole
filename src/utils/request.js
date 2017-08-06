@@ -18,7 +18,7 @@ export default async function request (options) {
   } else if (response.statusCode === 500) {
     wepy.showModal({
       title: '提示',
-      content: `服务器错误，请截图本提示，并联系深大汪峰。${response.data.errmsg}`
+      content: `服务器错误，请截图本提示，发送到Q群：437249421。${response.data.errmsg}`
     })
   } else {
     return response

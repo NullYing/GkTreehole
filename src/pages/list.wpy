@@ -127,7 +127,7 @@ export default class List extends wepy.component {
     } catch (e) {
       wepy.showModal({
         title: '提示',
-        content: `加载列表失败，请截图本提示，并联系深大汪峰。${e.message}`
+        content: `加载列表失败，请截图本提示，发送到Q群：437249421。${e.message}`
       })
     }
   }
@@ -135,7 +135,7 @@ export default class List extends wepy.component {
   async loadAds () {
     try {
       const raw = await http({
-        url: `${api.ads.url}/1`,
+        url: `${api.ads.url}`,
         method: api.ads.method
       })
 

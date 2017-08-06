@@ -7,7 +7,7 @@ const version = 1.0
 // development and production host
 const hosts = {
   development: 'https://dev.gxgk.cc',
-  production: 'https://wxapp.gxgk.cc'
+  production: 'https://shudong.gxgk.cc'
 }
 
 // apis
@@ -38,11 +38,11 @@ const api = {
   blog: {
     list: {
       method: 'GET',
-      url: '/v2/blogs'
+      url: '/shudong/blogs'
     },
     detail: {
       method: 'GET',
-      url: '/v2/blogs'
+      url: '/shudong/blogs'
     },
     like: {
       method: 'POST',
@@ -72,20 +72,20 @@ const api = {
   notifications: {
     count: {
       method: 'GET',
-      url: '/v2/notifications'
+      url: '/shudong/notifications'
     },
     messages: {
       method: 'GET',
-      url: '/v2/notifications/messages'
+      url: '/shudong/notifications/messages'
     },
     read: {
       method: 'PUT',
-      url: '/v2/notifications'
+      url: '/shudong/notifications'
     }
   },
   ads: {
     method: 'GET',
-    url: '/v2/ads'
+    url: '/shudong/ads'
   },
   configs: {
     method: 'GET',

@@ -72,7 +72,7 @@ export default class User extends wepy.component {
     } catch (e) {
       wepy.showModal({
         title: '提示',
-        content: `加载页面出错，请截图本提示，并联系深大汪峰。${e.message}`
+        content: `加载页面出错，请截图本提示，发送到Q群：437249421。${e.message}`
       })
     }
   }
@@ -94,7 +94,7 @@ export default class User extends wepy.component {
       } catch (e) {
         wepy.showModal({
           title: '提示',
-          content: `加载数据出错，请截图本提示，并联系深大汪峰。${e.message}`
+          content: `加载数据出错，请截图本提示，发送到Q群：437249421。${e.message}`
         })
       }
     }

@@ -254,7 +254,7 @@ export default class NewBlog extends wepy.page {
           wepy.hideToast()
           wepy.showModal({
             title: '提示',
-            content: '服务器错误，上传图片失败。请重试或截图本提示联系深大汪峰。' + e.message,
+            content: '服务器错误，上传图片失败。请重试或截图本提示发送到Q群：437249421。' + e.message,
             showCancel: false
           })
           return
@@ -272,7 +272,7 @@ export default class NewBlog extends wepy.page {
         wepy.hideToast()
         wepy.showModal({
           title: '提示',
-          content: '发送树洞失败。请截图本提示，联系深大汪峰。' + e.message,
+          content: '发送树洞失败。请截图本提示，发送到Q群：437249421。' + e.message,
           showCancel: false
         })
         return

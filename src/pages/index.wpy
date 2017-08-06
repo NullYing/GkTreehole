@@ -149,8 +149,8 @@ export default class Index extends wepy.page {
 
   // onShareAppMessage () {
   //   return {
-  //     title: '深大树洞',
-  //     desc: '深大树洞首页~快来匿名发表树洞啊~',
+  //     title: '广科树洞',
+  //     desc: '广科树洞首页~快来匿名发表树洞啊~',
   //     path: '/pages/index'
   //   }
   // }
