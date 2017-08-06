@@ -43,7 +43,7 @@ import user from './user'
 
 export default class Index extends wepy.page {
   config = {
-    navigationBarTitleText: '深大的树洞'
+    navigationBarTitleText: '广科树洞'
   }
 
   components = {

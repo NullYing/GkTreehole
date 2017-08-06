@@ -1,13 +1,13 @@
 // ENV
-const env = 'production' // 'development' or 'production'
+const env = 'development' // 'development' or 'production'
 
 // WXAPP VERSION
-const version = 2.0
+const version = 1.0
 
 // development and production host
 const hosts = {
-  development: 'http://localhost:3020',
-  production: 'https://sd.iszu.cn'
+  development: 'https://dev.gxgk.cc',
+  production: 'https://wxapp.gxgk.cc'
 }
 
 // apis
@@ -24,11 +24,11 @@ const api = {
      */
     login: {
       method: 'POST',
-      url: '/user/wxlogin'
+      url: '/shudong/user/wxlogin'
     },
     info: {
-      method: 'GET',
-      url: '/user/info'
+      method: 'POST',
+      url: '/shudong/user/info'
     },
     blog: {
       method: 'GET',
@@ -89,7 +89,7 @@ const api = {
   },
   configs: {
     method: 'GET',
-    url: '/v2/configs'
+    url: '/shudong/configs'
   }
 }
 
