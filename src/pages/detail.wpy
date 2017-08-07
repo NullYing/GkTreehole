@@ -138,7 +138,7 @@ import sensitiveWordChecker from '../utils/sensitiveWordChecker'
 
 export default class Detail extends wepy.page {
   config = {
-    navigationBarTitleText: '树洞正文'
+    navigationBarTitleText: '情报正文'
   }
 
   data = {
@@ -169,8 +169,8 @@ export default class Detail extends wepy.page {
 
     /**
      * 点赞
-     * @param {Number} idx 点赞树洞的索引
-     * @param {Number} id  点赞树洞的 id
+     * @param {Number} idx 点赞情报的索引
+     * @param {Number} id  点赞情报的 id
      */
     async like () {
       this.blog.like = !this.blog.like
@@ -223,8 +223,8 @@ export default class Detail extends wepy.page {
 
     /**
      * 显示更多操作
-     * @param {Number} idx 点赞树洞的索引
-     * @param {Number} id  点赞树洞的 id
+     * @param {Number} idx 点赞情报的索引
+     * @param {Number} id  点赞情报的 id
     */
     async showMore () {
       try {
@@ -467,7 +467,7 @@ export default class Detail extends wepy.page {
 
     if (raw.statusCode === 404) {
       await wepy.showToast({
-        title: '树洞不存在',
+        title: '情报不存在',
         icon: 'loading',
         image: '../assets/svgs/warn.svg',
         duration: 1500,

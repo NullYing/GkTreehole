@@ -72,10 +72,10 @@ export default class Message extends wepy.component {
 
   async onReload () {
   }
-  
+
   methods = {
     /**
-     * 跳转到树洞并设置为已读
+     * 跳转到情报并设置为已读
      * @param {Number} bid blog id
      * @param {Number} nid notification id
      */

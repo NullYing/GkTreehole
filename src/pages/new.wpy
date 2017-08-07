@@ -5,7 +5,7 @@
       auto-focus
       bindinput="inputChange"
       maxlength="-1"
-      placeholder="写下你想丢给树洞的话吧~"
+      placeholder="写下你想发布的情报吧~"
       placeholder-style="color: #999;">
     </textarea>
     <view class="image-list">
@@ -77,7 +77,7 @@ import sensitiveWordChecker from '../utils/sensitiveWordChecker'
 
 export default class NewBlog extends wepy.page {
   config = {
-    navigationBarTitleText: '发布新树洞'
+    navigationBarTitleText: '发布新情报'
   }
 
   data = {
@@ -167,7 +167,7 @@ export default class NewBlog extends wepy.page {
     },
 
     /**
-     * 发送树洞
+     * 发送情报
      */
     async send () {
       wepy.showToast({
@@ -272,7 +272,7 @@ export default class NewBlog extends wepy.page {
         wepy.hideToast()
         wepy.showModal({
           title: '提示',
-          content: '发送树洞失败。请截图本提示，发送到Q群：437249421。' + e.message,
+          content: '发送情报失败。请截图本提示，发送到Q群：437249421。' + e.message,
           showCancel: false
         })
         return
