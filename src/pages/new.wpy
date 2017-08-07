@@ -191,7 +191,7 @@ export default class NewBlog extends wepy.page {
         wepy.hideToast()
         const status = await wepy.showModal({
           title: '温馨提示',
-          content: '需要帮助？深圳 24 小时免费心理咨询热线：0755-28793123',
+          content: '需要帮助？24 小时免费心理咨询热线：0755-28793123',
           cancelText: '拨打热线',
           cancelColor: '#3CC51F',
           confirmText: '继续发送',

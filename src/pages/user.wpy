@@ -35,10 +35,10 @@
         </view>
         <view
           class="item-location"
-          wx:if="{{ item.location }}"
-          @tap.stop="showLocation({{ item.latitude }}, {{ item.longitude }})">
+          wx:if="{{ item.location.locationName }}"
+          @tap.stop="showLocation({{ item.location.latitude }}, {{ item.location.longitude }})">
           <image class="location-icon" src="../assets/svgs/location.svg"></image>
-          <text>{{ item.location }}</text>
+          <text>{{ item.location.locationName }}</text>
         </view>
       </navigator>
     </view>
@@ -75,6 +75,12 @@ export default class User extends wepy.component {
         content: `加载页面出错，请截图本提示，发送到Q群：437249421。${e.message}`
       })
     }
+  }
+
+  async onReachBottom () {
+  }
+
+  async onReload () {
   }
 
   methods = {

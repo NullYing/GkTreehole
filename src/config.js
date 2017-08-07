@@ -6,90 +6,81 @@ const version = 1.0
 
 // development and production host
 const hosts = {
-  development: 'https://dev.gxgk.cc',
-  production: 'https://shudong.gxgk.cc'
+  development: 'https://dev.gxgk.cc/shudong',
+  production: 'https://shudong.gxgk.cc/shudong'
 }
 
 // apis
 const api = {
   user: {
-    /**
-     * login api
-     * need header:
-     * {
-     *   'x-wechat-code': code,
-     *   'x-wechat-encrypted': encryptedData,
-     *   'x-wechat-iv': iv
-     * }
-     */
     login: {
       method: 'POST',
-      url: '/shudong/user/wxlogin'
+      url: '/user/wxlogin'
     },
     info: {
       method: 'POST',
-      url: '/shudong/user/info'
+      url: '/user/info'
     },
     blog: {
-      method: 'GET',
-      url: '/v2/user'
+      method: 'POST',
+      url: '/user/blog'
     }
   },
   blog: {
     list: {
       method: 'GET',
-      url: '/shudong/blogs'
+      url: '/blogs'
     },
     detail: {
       method: 'GET',
-      url: '/shudong/blogs'
+      url: '/blogs'
     },
     like: {
       method: 'POST',
-      url: '/blog/like'
+      url: '/blogs/like'
     },
     delete: {
       method: 'POST',
-      url: '/blog/delete'
+      url: '/blogs/delete'
     },
     imageUpload: {
       method: 'POST',
-      url: '/blog/image'
+      url: '/blogs/image'
     },
     new: {
       method: 'POST',
-      url: '/v2/blogs'
+      url: '/blogs/blogs'
     },
     comment: {
       method: 'POST',
-      url: '/v2/comments'
+      url: '/blogs/comments'
     },
     deleteComment: {
       method: 'DELETE',
-      url: '/v2/comments'
+      url: '/blogs/comments'
     }
   },
   notifications: {
     count: {
       method: 'GET',
-      url: '/shudong/notifications'
+      url: '/notifications'
     },
     messages: {
       method: 'GET',
-      url: '/shudong/notifications/messages'
+      url: '/notifications/messages'
     },
     read: {
       method: 'PUT',
-      url: '/shudong/notifications'
+      url: '/notifications'
     }
   },
   ads: {
     method: 'GET',
-    url: '/shudong/ads'
+    url: '/ads'
   },
   configs: {
     method: 'GET',
-    url: '/shudong/configs'
+    url: '/configs'
   }
 }
 

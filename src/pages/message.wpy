@@ -67,6 +67,12 @@ export default class Message extends wepy.component {
     }
   }
 
+  async onReachBottom () {
+  }
+
+  async onReload () {
+  }
+  
   methods = {
     /**
      * 跳转到树洞并设置为已读
