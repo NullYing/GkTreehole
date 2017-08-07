@@ -49,7 +49,7 @@ const api = {
     },
     new: {
       method: 'POST',
-      url: '/blogs/blogs'
+      url: '/blogs/new'
     },
     comment: {
       method: 'POST',

@@ -231,14 +231,14 @@ export default class NewBlog extends wepy.page {
               url: api.blog.imageUpload.url,
               filePath: v,
               name: 'file',
-              formData: {
-                _session: wepy.getStorageSync('_session')
+              header: {
+                'x-wechat-session': wepy.getStorageSync('_session')
               }
             })
 
             r.data = JSON.parse(r.data)
 
-            if (r.data.errcode === 0 && r.data.data.url) {
+            if (r.data.errorcode === 0 && r.data.data.url) {
               pack.images.push(r.data.data.url)
             } else {
               wepy.hideToast()
