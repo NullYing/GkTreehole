@@ -23,7 +23,7 @@ export default async function request (options) {
   } else {
     if (response.statusCode === 200 && response.data.errorcode !== 0 && response.data.errorcode !== 404) {
       wepy.hideToast()
-      await wepy.showModal({
+      wepy.showModal({
         title: '提示',
         content: response.data.errmsg,
         showCancel: false
