@@ -85,7 +85,7 @@
           wx:for-item="comment"
           wx:for-index="i"
           wx:key="{{ i }}"
-          @tap.stop="showAction({{ comment.nickname }}, {{ comment.openid }}, {{ comment.isAdmin }}, {{ comment.isAuthor }}, {{ comment.cid }}, {{ i }})">
+          @tap.stop="showAction({{ comment.nickname }}, {{ comment.unionid }}, {{ comment.isAdmin }}, {{ comment.isAuthor }}, {{ comment.cid }}, {{ i }})">
           <view class="comment-user-info">
             <image src="{{ comment.avatar }}" class="comment-user-avatar"></image>
           </view>
@@ -266,12 +266,12 @@ export default class Detail extends wepy.page {
     /**
      * 显示操作列表
      * @param {String}  nickname 操作对象的昵称
-     * @param {String}  openid   操作对象的 openid
+     * @param {String}  unionid   操作对象的 unionid
      * @param {Boolean} isAdmin  是否具有高级权限
      * @param {Number}  id       操作对象的评论的 id
      * @param {Number}  idx      操作对象的索引
      */
-    async showAction (nickname, openid, isAdmin, isAuthor, id, idx) {
+    async showAction (nickname, unionid, isAdmin, isAuthor, id, idx) {
       console.log(arguments)
       const itemList = [`回复 ${nickname}:`]
 
@@ -285,7 +285,7 @@ export default class Detail extends wepy.page {
         })
 
         if (tapIndex === 0) {
-          this.methods.reply.call(this, nickname, openid)
+          this.methods.reply.call(this, nickname, unionid)
         } else if (tapIndex === 1) {
           await this.methods.deleteComment.call(this, id, idx)
         }
@@ -295,12 +295,12 @@ export default class Detail extends wepy.page {
     /**
      * 回复指定人
      * @param {String} nickname 回复对象的昵称
-     * @param {String} openid   回复对象的 openid
+     * @param {String} unionid   回复对象的 unionid
      */
-    reply (nickname, openid) {
+    reply (nickname, unionid) {
       this.inputContent = '回复 ' + nickname + '：'
       this.focusComment = true
-      this.replyTo = openid
+      this.replyTo = unionid
       this.$apply()
     },
 
