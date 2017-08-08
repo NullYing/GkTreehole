@@ -7,7 +7,7 @@
         <view class="blog-user-avatar">
           <image
             class="avatar"
-            src="{{ blog.user.avatar === '../../assert/avatar.png' ? '../assets/svgs/avatar/avatar.svg' : blog.user.avatar }}">
+            src="{{ !blog.user.avatar ? '../assets/svgs/avatar/avatar.svg' : blog.user.avatar }}">
           </image>
         </view>
         <view class="blog-user-info">

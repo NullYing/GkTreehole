@@ -263,11 +263,20 @@ export default class NewBlog extends wepy.page {
 
       // upload blog
       try {
-        await http({
+        const r = await http({
           url: api.blog.new.url,
           method: api.blog.new.method,
           data: pack
         })
+        if (r.data.errorcode !== 0) {
+          wepy.hideToast()
+          wepy.showModal({
+            title: '提示',
+            content: r.data.errmsg,
+            showCancel: false
+          })
+          return
+        }
       } catch (e) {
         wepy.hideToast()
         wepy.showModal({
