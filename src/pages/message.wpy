@@ -18,7 +18,7 @@
       wx:for-item="item"
       wx:key="{{ idx }}"
       wx:for-index="idx"
-      @tap.stop="jumpTo({{ item.bid }}, {{ item.nid }})"
+      @tap.stop="jumpTo({{ item.bid }}, {{ item.cid }})"
       class="item {{ item.isUnread ? 'unread' : 'read' }}">
       <view class="avatar">
         <image src="{{ item.user.avatar }}" class="avatar-image"></image>
@@ -77,11 +77,11 @@ export default class Message extends wepy.component {
     /**
      * 跳转到情报并设置为已读
      * @param {Number} bid blog id
-     * @param {Number} nid notification id
+     * @param {Number} cid comment id
      */
-    jumpTo (bid, nid) {
+    jumpTo (bid, cid) {
       http({
-        url: `${api.notifications.read.url}/${nid}`,
+        url: `${api.notifications.read.url}/${cid}`,
         method: api.notifications.read.method
       })
 
