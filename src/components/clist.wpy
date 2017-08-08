@@ -22,7 +22,7 @@
         <view class="list-user-avatar">
           <image
             class="avatar"
-            src="{{ item.user.avatar === '../../assert/avatar.png' ? '../assets/svgs/avatar/avatar.svg' : item.user.avatar }}">
+            src="{{ !item.user.avatar ? '../assets/svgs/avatar/avatar.svg' : item.user.avatar }}">
           </image>
         </view>
         <view class="list-user-info">
@@ -121,8 +121,8 @@ export default class Clist extends wepy.component {
 
     /**
      * 点赞
-     * @param {Number} idx 点赞树洞的索引
-     * @param {Number} id  点赞树洞的 id
+     * @param {Number} idx 点赞情报的索引
+     * @param {Number} id  点赞情报的 id
      */
     async like (idx, id) {
       const list = this.list
@@ -164,8 +164,8 @@ export default class Clist extends wepy.component {
 
     /**
      * 显示更多操作
-     * @param {Number} idx 点赞树洞的索引
-     * @param {Number} id  点赞树洞的 id
+     * @param {Number} idx 点赞情报的索引
+     * @param {Number} id  点赞情报的 id
     */
     async showMore (idx, id) {
       try {
@@ -178,7 +178,7 @@ export default class Clist extends wepy.component {
         if (tapIndex === 0) {
           const status = await wepy.showModal({
             title: '删除',
-            content: '确定要删除这条树洞？',
+            content: '确定要删除这条情报？',
             cancelText: '不删了',
             cancelColor: '#666666',
             confirmText: '删除吧',
