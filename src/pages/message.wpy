@@ -57,7 +57,7 @@ export default class Message extends wepy.component {
         method: api.notifications.messages.method
       })
 
-      this.list = messages.data.data.unreadMessages
+      this.list = messages.data.data.Messages
       this.$apply()
     } catch (e) {
       wepy.showModal({
@@ -121,7 +121,7 @@ export default class Message extends wepy.component {
           method: api.notifications.messages.method
         })
 
-        if (messages.data.data.unreadMessages.length !== 0) {
+        if (messages.data.data.Messages.length !== 0) {
           this.page++
           this.list.push(...messages.data.data.Messages)
           this.$apply()
