@@ -21,6 +21,15 @@ export default async function request (options) {
       content: `服务器错误，请截图本提示，发送到Q群：437249421。${response.data.errmsg}`
     })
   } else {
+    if (response.statusCode === 200 && response.data.errorcode !== 0 && response.data.errorcode !== 404) {
+      wepy.hideToast()
+      await wepy.showModal({
+        title: '提示',
+        content: response.data.errmsg,
+        showCancel: false
+      })
+      return
+    }
     return response
   }
 }
