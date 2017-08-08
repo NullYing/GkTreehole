@@ -465,7 +465,7 @@ export default class Detail extends wepy.page {
       method: api.blog.detail.method
     })
 
-    if (raw.statusCode === 404) {
+    if (raw.statusCode === 404 || raw.data.errorcode === 404) {
       await wepy.showToast({
         title: '情报不存在',
         icon: 'loading',
