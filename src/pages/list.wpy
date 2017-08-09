@@ -10,7 +10,7 @@
         <image src="../assets/svgs/close-ad.svg"></image>
       </view>
     </view>
-    <clist :list.sync="list"></clist>
+    <clist :list.sync="list" @reload.user="reloadData"></clist>
   </view>
 </template>
 
@@ -38,6 +38,11 @@ export default class List extends wepy.component {
   methods = {
     closeAd () {
       this.showAd = false
+      this.$apply()
+    },
+
+    reloadData () {
+      this.onReload()
       this.$apply()
     }
   }
