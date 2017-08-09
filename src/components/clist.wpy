@@ -385,7 +385,7 @@ export default class Clist extends wepy.component {
       .list-item-location {
         float: left;
         margin-top: 10px;
-        width: 580rpx;
+        width: 600rpx;
         height: 24px;
 
         .location-icon {

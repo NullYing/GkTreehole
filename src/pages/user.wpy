@@ -185,7 +185,7 @@ export default class User extends wepy.component {
       .item-location {
         float: left;
         margin-top: 10px;
-        width: 250px;
+        width: 600rpx;
         height: 24px;
 
         .location-icon {
