@@ -154,6 +154,14 @@ export default class Detail extends wepy.page {
     isTest: true
   }
 
+  onShareAppMessage () {
+    return {
+      title: `一条来着${this.blog.user.nickname}的情报 - 广科情报局`,
+      desc: '广科情报局~广科最实时的情报中心~',
+      path: '/pages/index'
+    }
+  }
+
   methods = {
     /**
      * 查看大图
@@ -583,7 +591,7 @@ export default class Detail extends wepy.page {
       .blog-item-location {
         float: left;
         margin-top: 10px;
-        width: 250px;
+        width: 580rpx;
         height: 24px;
 
         .location-icon {

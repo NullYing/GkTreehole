@@ -58,6 +58,10 @@ const api = {
     deleteComment: {
       method: 'DELETE',
       url: '/blogs/comments'
+    },
+    top: {
+      method: 'POST',
+      url: '/blogs/top'
     }
   },
   notifications: {

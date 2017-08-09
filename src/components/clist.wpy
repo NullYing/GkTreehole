@@ -169,10 +169,13 @@ export default class Clist extends wepy.component {
     */
     async showMore (idx, id) {
       try {
+        const list = this.list
+        let btn = [ '删除' ]
+        if (list[idx].user.isAdmin) {
+          btn = [ '删除', '置顶' ]
+        }
         const { tapIndex } = await wepy.showActionSheet({
-          itemList: [
-            '删除'
-          ]
+          itemList: btn
         })
 
         if (tapIndex === 0) {
@@ -196,6 +199,29 @@ export default class Clist extends wepy.component {
                 bid: id
               }
             })
+          }
+        } else if (tapIndex === 1) {
+          const status = await wepy.showModal({
+            title: '置顶',
+            content: '确定要置顶这条情报？',
+            cancelText: '不置顶',
+            cancelColor: '#666666',
+            confirmText: '置顶吧',
+            confirmColor: '#3CC51F'
+          })
+
+          if (status.confirm) {
+            this.$apply()
+
+            await http({
+              url: api.blog.top.url,
+              method: api.blog.top.method,
+              data: {
+                bid: id
+              }
+            })
+            // save status
+            wepy.setStorageSync('isNeedReloadList', 'true')
           }
         }
       } catch (e) {
@@ -360,7 +386,7 @@ export default class Clist extends wepy.component {
       .list-item-location {
         float: left;
         margin-top: 10px;
-        width: 250px;
+        width: 580rpx;
         height: 24px;
 
         .location-icon {

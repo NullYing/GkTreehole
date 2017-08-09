@@ -25,7 +25,7 @@ export default async function request (options) {
       wepy.hideToast()
       wepy.showModal({
         title: '提示',
-        content: response.data.errmsg,
+        content: response.data.errmsg || '发生错误，请重试',
         showCancel: false
       })
     }
