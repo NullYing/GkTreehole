@@ -89,7 +89,8 @@ import sensitiveWordChecker from '../utils/sensitiveWordChecker'
 
 export default class NewBlog extends wepy.page {
   config = {
-    navigationBarTitleText: '发布新情报'
+    navigationBarTitleText: '发布新情报',
+    enablePullDownRefresh: false
   }
 
   data = {

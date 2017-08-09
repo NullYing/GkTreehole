@@ -21,7 +21,7 @@
       @tap.stop="jumpTo({{ item.bid }}, {{ item.cid }})"
       class="item {{ item.isUnread ? 'unread' : 'read' }}">
       <view class="avatar">
-        <image src="{{ item.user.avatar }}" class="avatar-image"></image>
+        <image src="{{ item.user.avatar ? item.user.avatar : '../assets/svgs/avatar/avatar.svg' }}" class="avatar-image"></image>
       </view>
       <view class="content">
         <view class="userinfo">
