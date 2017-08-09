@@ -87,7 +87,7 @@
           wx:for-index="i"
           wx:key="{{ i }}"
           @tap.stop="showAction({{ comment.nickname }}, {{ comment.unionid }}, {{ comment.cid }}, {{ i }})"
-          data-isAdmin="{{ blog.isAdmin }}"
+          data-isAdmin="{{ blog.user.isAdmin }}"
           data-isAuthor="{{ comment.isAuthor }}">
           <view class="comment-user-info">
             <image src="{{ comment.avatar ? comment.avatar :'../assets/svgs/avatar/avatar.svg' }}" class="comment-user-avatar"></image>
@@ -241,7 +241,7 @@ export default class Detail extends wepy.page {
       try {
         let btn = [ '删除' ]
         if (this.blog.user.isAdmin) {
-          btn = [ '删除', `${!this.blog.isFixed ? '置顶' : '取消置顶'}` ]
+          btn.push(`${!this.blog.isFixed ? '置顶' : '取消置顶'}`)
         }
         const { tapIndex } = await wepy.showActionSheet({
           itemList: btn
@@ -321,8 +321,8 @@ export default class Detail extends wepy.page {
     async showAction (nickname, unionid, id, idx, e) {
       console.log(arguments)
       const itemList = [`回复 ${nickname}:`]
-      let isAdmin = e.currentTarget.dataset.commentid
-      let isAuthor = e.currentTarget.dataset.isAuthor
+      let isAdmin = e.currentTarget.dataset.isadmin
+      let isAuthor = e.currentTarget.dataset.isauthor
       if (isAdmin || isAuthor) {
         itemList.push('删除评论')
       }
