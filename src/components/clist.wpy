@@ -172,7 +172,7 @@ export default class Clist extends wepy.component {
         const list = this.list
         let btn = [ '删除' ]
         if (list[idx].user.isAdmin) {
-          btn = [ '删除', '置顶' ]
+          btn = [ '删除', `${!list[idx].isFixed ? '置顶' : '取消置顶'}` ]
         }
         const { tapIndex } = await wepy.showActionSheet({
           itemList: btn
@@ -202,11 +202,11 @@ export default class Clist extends wepy.component {
           }
         } else if (tapIndex === 1) {
           const status = await wepy.showModal({
-            title: '置顶',
-            content: '确定要置顶这条情报？',
-            cancelText: '不置顶',
+            title: `${!list[idx].isFixed ? '置顶' : '取消置顶'}`,
+            content: `确定要${!list[idx].isFixed ? '置顶' : '取消置顶'}这条情报？`,
+            cancelText: '取消',
             cancelColor: '#666666',
-            confirmText: '置顶吧',
+            confirmText: '确定',
             confirmColor: '#3CC51F'
           })
 
@@ -220,11 +220,11 @@ export default class Clist extends wepy.component {
                 bid: id
               }
             })
-            // save status
-            wepy.setStorageSync('isNeedReloadList', 'true')
+            this.$invoke('./pages/list', 'loadData')
           }
         }
       } catch (e) {
+        console.log(e)
         console.log('User cancel')
       }
     },

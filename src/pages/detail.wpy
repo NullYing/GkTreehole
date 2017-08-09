@@ -236,24 +236,60 @@ export default class Detail extends wepy.page {
     */
     async showMore () {
       try {
+        let btn = [ '删除' ]
+        if (this.blog.user.isAdmin) {
+          btn = [ '删除', `${!this.blog.isFixed ? '置顶' : '取消置顶'}` ]
+        }
         const { tapIndex } = await wepy.showActionSheet({
-          itemList: [
-            '删除'
-          ]
+          itemList: btn
         })
-
         if (tapIndex === 0) {
-          await http({
-            url: api.blog.delete.url,
-            method: api.blog.delete.method,
-            data: {
-              bid: this.blog.id
-            }
+          const status = await wepy.showModal({
+            title: '删除',
+            content: '确定要删除这条情报？',
+            cancelText: '不删了',
+            cancelColor: '#666666',
+            confirmText: '删除吧',
+            confirmColor: '#3CC51F'
           })
 
-          await wepy.navigateBack({
-            delta: 1
+          if (status.confirm) {
+            await http({
+              url: api.blog.delete.url,
+              method: api.blog.delete.method,
+              data: {
+                bid: this.blog.id
+              }
+            })
+
+            await wepy.navigateBack({
+              delta: 1
+            })
+          }
+        } else if (tapIndex === 1) {
+          const title = `${!this.blog.isFixed ? '置顶' : '取消置顶'}`
+          const status = await wepy.showModal({
+            title: title,
+            content: `确定要${title}这条情报？`,
+            cancelText: '取消',
+            cancelColor: '#666666',
+            confirmText: '确定',
+            confirmColor: '#3CC51F'
           })
+
+          if (status.confirm) {
+            this.$apply()
+
+            await http({
+              url: api.blog.top.url,
+              method: api.blog.top.method,
+              data: {
+                bid: this.blog.id
+              }
+            })
+            // save status
+            wepy.setStorageSync('isNeedReloadList', 'true')
+          }
         }
       } catch (e) {}
     },
