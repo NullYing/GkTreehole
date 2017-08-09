@@ -28,7 +28,8 @@ export default class List extends wepy.component {
     ad: {},
     showAd: true,
     userinfo: store.state.userinfo,
-    page: 1
+    page: 1,
+    reachEnd: false
   }
 
   components = {
@@ -99,8 +100,11 @@ export default class List extends wepy.component {
   }
 
   async onReachBottom () {
-    this.page++
-    await this.loadData()
+    if (!this.reachEnd){
+      this.page++
+      await this.loadData()
+    }
+
   }
 
   onShow () {
@@ -123,7 +127,12 @@ export default class List extends wepy.component {
       if (this.page === 1) {
         this.list = listResponse.data.data
       } else {
-        this.list.push(...listResponse.data.data)
+        if (listResponse.data.data[0]) {
+          this.list.push(...listResponse.data.data)
+        } else {
+          this.reachEnd = true
+          this.page = this.page -1
+        }
       }
 
       wepy.stopPullDownRefresh()

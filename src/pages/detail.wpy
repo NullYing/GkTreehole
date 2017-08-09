@@ -3,6 +3,7 @@
     <!-- blog content -->
     <view class="blog" wx:if="{{ !loading }}">
       <!-- User Info -->
+      <view class="blog-item-type" style="background:{{ blog.color }}" wx:if="{{ blog.type }}">{{ blog.type }}</view>
       <view class="blog-user">
         <view class="blog-user-avatar">
           <image
@@ -593,6 +594,20 @@ export default class Detail extends wepy.page {
         }
       }
     }
+
+   /* type */
+   .blog-item-type {
+     position: absolute;
+     top: 24px;
+     right: 0;
+     padding: 5px 7px;
+     font-size: 12px;
+     font-weight: bold;
+     color: #FFF;
+     border-radius: 4px 0 0 4px;
+     text-align: center;
+     background: #fa6570;
+   }
 
     /* body */
     .blog-item-body {

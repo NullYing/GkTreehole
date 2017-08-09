@@ -14,6 +14,7 @@
       wx:key="{{ idx }}"
       wx:for-index="idx"
       class="list-item">
+      <view class="list-item-type" style="background:{{ item.color }}" wx:if="{{ item.type }}">{{ item.type }}</view>
       <view class="list-item-fixed" wx:if="{{ item.isFixed }}">置顶</view>
       <!-- User Info -->
       <navigator
@@ -294,6 +295,20 @@ export default class Clist extends wepy.component {
 
     /* fixed */
     .list-item-fixed {
+      position: absolute;
+      top: 54px;
+      right: 0;
+      padding: 5px 7px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #FFF;
+      border-radius: 4px 0 0 4px;
+      text-align: center;
+      background: #fa6570;
+    }
+
+    /* type */
+    .list-item-type {
       position: absolute;
       top: 24px;
       right: 0;
