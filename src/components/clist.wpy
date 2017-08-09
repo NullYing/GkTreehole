@@ -14,8 +14,8 @@
       wx:key="{{ idx }}"
       wx:for-index="idx"
       class="list-item">
-      <view class="list-item-type" style="background:{{ item.color }}" wx:if="{{ item.type }}">{{ item.type }}</view>
-      <view class="list-item-fixed" wx:if="{{ item.isFixed }}">置顶</view>
+      <view class="{{ item.isFixed ? 'list-item-tag-second': 'list-item-tag-first'}}" style="background:{{ item.color }}" wx:if="{{ item.type }}">{{ item.type }}</view>
+      <view class="list-item-tag-first" wx:if="{{ item.isFixed }}">置顶</view>
       <!-- User Info -->
       <navigator
       class="list-user"
@@ -294,7 +294,7 @@ export default class Clist extends wepy.component {
     overflow: hidden;
 
     /* fixed */
-    .list-item-fixed {
+    .list-item-tag-second {
       position: absolute;
       top: 54px;
       right: 0;
@@ -307,8 +307,8 @@ export default class Clist extends wepy.component {
       background: #fa6570;
     }
 
-    /* type */
-    .list-item-type {
+    /* tag */
+    .list-item-tag-first {
       position: absolute;
       top: 24px;
       right: 0;
