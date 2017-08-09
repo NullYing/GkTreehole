@@ -5,7 +5,7 @@ const env = 'development' // 'development' or 'production'
 const version = 1.0
 
 // development and production host
-require('./hosts.js')
+const hosts = require('./hosts.js').hosts
 
 // apis
 const api = {
