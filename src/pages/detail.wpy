@@ -88,7 +88,7 @@
           wx:key="{{ i }}"
           @tap.stop="showAction({{ comment.nickname }}, {{ comment.unionid }}, {{ comment.isAdmin }}, {{ comment.isAuthor }}, {{ comment.cid }}, {{ i }})">
           <view class="comment-user-info">
-            <image src="{{ comment.avatar }}" class="comment-user-avatar"></image>
+            <image src="{{ comment.avatar ? comment.avatar :'../assets/svgs/avatar/avatar.svg' }}" class="comment-user-avatar"></image>
           </view>
           <view class="comment-info">
             <text class="comment-nickname">{{ comment.nickname }}</text>

@@ -61,9 +61,10 @@
         class="location"
         style="display:flex;">
         <image class="location-icon" src="../assets/svgs/location.svg"></image>
-        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-          <text>分类
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
+          <text wx:if="{{index}}">当前分类：{{type[index]}}
           </text>
+          <text wx:else>点击选择分类</text>
         </picker>
       </view>
     </view>
@@ -99,10 +100,21 @@ export default class NewBlog extends wepy.page {
     location: '',
     latitude: '',
     longitude: '',
-    disabled: true
+    disabled: true,
+    type: [],
+    index: 0
   }
 
   methods = {
+    /**
+     * 分类选择监听器
+     * 自动映射到 content
+     * @param {Event} e 输入事件
+     */
+    bindPickerChange: function(e) {
+      this.index = e.detail.value
+      this.$apply()
+    },
     /**
      * 输入监听器
      * 自动映射到 content
@@ -231,7 +243,8 @@ export default class NewBlog extends wepy.page {
         device: this.device,
         location: this.location,
         latitude: this.latitude,
-        longitude: this.longitude
+        longitude: this.longitude,
+        type: this.type[this.index]
       }
 
       // upload images
@@ -313,6 +326,16 @@ export default class NewBlog extends wepy.page {
         delta: 1
       })
     }
+  }
+
+  // load device info
+  async onLoad () {
+    const r = await http({
+      url: api.blog.typeList.url,
+      method: api.blog.typeList.method,
+    })
+    this.type = r.data.data.type
+    this.$apply()
   }
 
   // load device info
@@ -405,6 +428,7 @@ export default class NewBlog extends wepy.page {
         font-size: 14px;
         line-height: 32px;
         color: #666;
+        margin-left:5px;
       }
     }
     .location-active {

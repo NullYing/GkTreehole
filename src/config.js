@@ -25,11 +25,11 @@ const api = {
   },
   blog: {
     list: {
-      method: 'GET',
+      method: 'POST',
       url: '/blogs'
     },
     detail: {
-      method: 'GET',
+      method: 'POST',
       url: '/blogs'
     },
     like: {
@@ -47,6 +47,10 @@ const api = {
     new: {
       method: 'POST',
       url: '/blogs/new'
+    },
+    typeList: {
+      method: 'GET',
+      url: '/blogs/type/list'
     },
     comment: {
       method: 'POST',
