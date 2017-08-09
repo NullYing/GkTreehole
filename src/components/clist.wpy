@@ -8,17 +8,18 @@
       class="newBtn">
       <image src="../assets/svgs/write.svg" class="newBtn-icon"></image>
     </navigator>
-    <navigator
+    <view
       wx:for="{{ list }}"
       wx:for-item="item"
       wx:key="{{ idx }}"
       wx:for-index="idx"
-      url="/pages/detail?id={{ item.id }}"
-      open-type="navigate"
       class="list-item">
       <view class="list-item-fixed" wx:if="{{ item.isFixed }}">置顶</view>
       <!-- User Info -->
-      <view class="list-user">
+      <navigator
+      class="list-user"
+      url="/pages/detail?id={{ item.id }}"
+      open-type="navigate">
         <view class="list-user-avatar">
           <image
             class="avatar"
@@ -36,9 +37,11 @@
           </view>
           <text class="time-and-from">{{ item.time + ' 来自' + item.device }}</text>
         </view>
-      </view>
+      </navigator>
       <!-- Blog Body -->
-      <view class="list-item-body">
+      <navigator class="list-item-body"      
+      url="/pages/detail?id={{ item.id }}"
+      open-type="navigate">
         <text class="list-item-body-content">{{ item.text }}</text>
         <view class="list-item-body-images" wx:if="{{ item.images.length !== 0 }}">
           <image
@@ -59,7 +62,7 @@
           <image class="location-icon" src="../assets/svgs/location.svg"></image>
           <text>{{ item.location.locationName }}</text>
         </view>
-      </view>
+      </navigator>
       <!-- Blog Operations -->
       <view class="list-item-operations" wx:if="{{ !isTest }}">
         <view
@@ -87,7 +90,7 @@
             src="../assets/svgs/more.svg"></image>
         </view>
       </view>
-    </navigator>
+    </view>
   </view>
 </template>
 
