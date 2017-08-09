@@ -264,7 +264,8 @@ export default class Detail extends wepy.page {
                 bid: this.blog.id
               }
             })
-
+            // 刷新列表
+            wepy.setStorageSync('isNeedReloadList', 'true')
             await wepy.navigateBack({
               delta: 1
             })

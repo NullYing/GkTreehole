@@ -134,7 +134,7 @@ export default class Index extends wepy.page {
 
     setInterval(async () => {
       await this.loadNotifications()
-    }, 10 * 1000)
+    }, 15 * 1000)
   }
 
   async loadNotifications () {
