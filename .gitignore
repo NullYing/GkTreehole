@@ -4,3 +4,4 @@ dist/
 *.log
 test/unit/coverage
 .wepycache
+src/hosts.js

@@ -1,1 +1,1 @@
-wepy build --watch
+cmd /k wepy build --watch

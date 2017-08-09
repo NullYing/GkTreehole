@@ -5,10 +5,7 @@ const env = 'development' // 'development' or 'production'
 const version = 1.0
 
 // development and production host
-const hosts = {
-  development: 'https://dev.gxgk.cc/shudong',
-  production: 'https://shudong.gxgk.cc/shudong'
-}
+require('./hosts.js')
 
 // apis
 const api = {

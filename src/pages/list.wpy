@@ -90,21 +90,22 @@ export default class List extends wepy.component {
 
   async onReload () {
     this.page = 1
+    this.reachEnd = false
     await this.loadData()
     this.$apply()
   }
 
   async onPullDownRefresh () {
     this.page = 1
+    this.reachEnd = false
     await this.loadData()
   }
 
   async onReachBottom () {
-    if (!this.reachEnd){
+    if (!this.reachEnd) {
       this.page++
       await this.loadData()
     }
-
   }
 
   onShow () {
@@ -131,7 +132,7 @@ export default class List extends wepy.component {
           this.list.push(...listResponse.data.data)
         } else {
           this.reachEnd = true
-          this.page = this.page -1
+          this.page = this.page - 1
         }
       }
 

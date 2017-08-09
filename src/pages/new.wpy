@@ -56,6 +56,17 @@
         <view class="isanonymous-btn-key"></view>
       </view>
     </view>
+    <view class="isanonymous" wx:if="{{ !isAnonymous }}">
+      <view
+        class="location"
+        style="display:flex;">
+        <image class="location-icon" src="../assets/svgs/location.svg"></image>
+        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          <text>分类
+          </text>
+        </picker>
+      </view>
+    </view>
     <view class="submit-btn">
       <button
         type="primary"
