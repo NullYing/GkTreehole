@@ -60,7 +60,7 @@
       <view
         class="location"
         style="display:flex;">
-        <image class="location-icon" src="../assets/svgs/location.svg"></image>
+        <image class="location-icon" src="../assets/svgs/tag.svg"></image>
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
           <text wx:if="{{index}}">当前分类：{{type[index]}}
           </text>
@@ -244,7 +244,7 @@ export default class NewBlog extends wepy.page {
         location: this.location,
         latitude: this.latitude,
         longitude: this.longitude,
-        type: this.type[this.index]
+        type: this.index
       }
 
       // upload images
@@ -332,7 +332,7 @@ export default class NewBlog extends wepy.page {
   async onLoad () {
     const r = await http({
       url: api.blog.typeList.url,
-      method: api.blog.typeList.method,
+      method: api.blog.typeList.method
     })
     this.type = r.data.data.type
     this.$apply()

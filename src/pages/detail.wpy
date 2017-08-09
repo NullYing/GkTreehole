@@ -86,7 +86,9 @@
           wx:for-item="comment"
           wx:for-index="i"
           wx:key="{{ i }}"
-          @tap.stop="showAction({{ comment.nickname }}, {{ comment.unionid }}, {{ comment.isAdmin }}, {{ comment.isAuthor }}, {{ comment.cid }}, {{ i }})">
+          @tap.stop="showAction({{ comment.nickname }}, {{ comment.unionid }}, {{ comment.cid }}, {{ i }})"
+          data-isAdmin="{{ blog.isAdmin }}"
+          data-isAuthor="{{ comment.isAuthor }}">
           <view class="comment-user-info">
             <image src="{{ comment.avatar ? comment.avatar :'../assets/svgs/avatar/avatar.svg' }}" class="comment-user-avatar"></image>
           </view>
@@ -316,10 +318,11 @@ export default class Detail extends wepy.page {
      * @param {Number}  id       操作对象的评论的 id
      * @param {Number}  idx      操作对象的索引
      */
-    async showAction (nickname, unionid, isAdmin, isAuthor, id, idx) {
+    async showAction (nickname, unionid, id, idx, e) {
       console.log(arguments)
       const itemList = [`回复 ${nickname}:`]
-
+      let isAdmin = e.currentTarget.dataset.commentid
+      let isAuthor = e.currentTarget.dataset.isAuthor
       if (isAdmin || isAuthor) {
         itemList.push('删除评论')
       }
