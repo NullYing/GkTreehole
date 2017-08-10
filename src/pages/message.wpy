@@ -229,6 +229,7 @@ export default class Message extends wepy.component {
         color: #222;
         font-size: 14px;
         line-height: 26px;
+        word-wrap:break-word;
       }
     }
   }
