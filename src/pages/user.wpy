@@ -21,7 +21,7 @@
         open-type="navigate"
         class="item-body">
         <text class="item-body-content">{{ item.content }}</text>
-        <view class="item-body-images" wx:if="{{ item.images.length !== 0 }}">
+        <view class="item-body-images" wx:if="{{ item.images && item.images.length !== 0 }}">
           <image
             wx:for-item="image"
             wx:for="{{ item.images }}"
