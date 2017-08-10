@@ -12,7 +12,7 @@ export default async function request (options) {
 
   let response = await wepy.request(options)
 
-  if (response.statusCode === 401) {
+  if (response.statusCode === 401 || (response.statusCode === 200 && response.data.errorcode === 401)) {
     await interfaces.login()
     return await request(options)
   } else if (response.statusCode === 500) {

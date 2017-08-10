@@ -46,12 +46,17 @@ const interfaces = {
         key: '_session',
         data: logininfo.data.data.session_id
       })
+      await wepy.setStorage({
+        key: 'userinfo',
+        data: userinfo
+      })
     } catch (e) {
       wepy.showModal({
         title: '提示',
         content: `获取用户信息失败，请关闭重新进入。${e.message}`
       })
     }
+    return userinfo
   }
 }
 

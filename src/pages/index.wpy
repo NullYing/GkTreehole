@@ -117,7 +117,8 @@ export default class Index extends wepy.page {
     }
 
     try {
-      await interfaces.login()
+      const userinfo = await interfaces.login()
+      this.$parent.globalData.userinfo = userinfo
     } catch (e) {
       wepy.showModal({
         title: '提示',
