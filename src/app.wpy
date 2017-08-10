@@ -19,7 +19,9 @@ export default class extends wepy.app {
   }
   globalData = {
     // 个人信息
-    userinfo: {}
+    userinfo: {},
+    // 是否为封号用户
+    isBlock: false
   }
   constructor () {
     super()

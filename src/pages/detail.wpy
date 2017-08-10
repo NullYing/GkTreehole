@@ -227,7 +227,8 @@ export default class Detail extends wepy.page {
         } else {
           this.blog.likeNum--
         }
-
+        // 刷新列表
+        wepy.setStorageSync('isNeedReloadList', 'true')
         this.$apply()
       }
     },
@@ -482,6 +483,9 @@ export default class Detail extends wepy.page {
         this.$apply()
 
         wepy.hideToast()
+
+        // 刷新列表
+        wepy.setStorageSync('isNeedReloadList', 'true')
       } catch (e) {
         wepy.hideToast()
         wepy.showModal({

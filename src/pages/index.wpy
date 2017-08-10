@@ -92,6 +92,11 @@ export default class Index extends wepy.page {
     }
   }
 
+  onHide () {
+    wepy.setStorageSync('isNeedReloadList', 'true')
+    console.log('hide index')
+  }
+
   onPullDownRefresh () {
     this.$invoke(this.tabs[this.tab], 'onPullDownRefresh')
   }
