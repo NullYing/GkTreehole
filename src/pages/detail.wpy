@@ -113,7 +113,7 @@
         focus="{{ focusComment }}"
         value="{{ inputContent }}"
         confirm-type="send"
-        cursor-spacing="42"/>
+        cursor-spacing="0"/>
       <image
         class="send-btn"
         wx:if="{{ !disable }}"
@@ -544,7 +544,7 @@ export default class Detail extends wepy.page {
 <style lang="less">
 .page {
   width: 100%;
-  padding-bottom: 60px;
+  padding-bottom:50px;
 
   .blog {
     width: 100%;
@@ -797,16 +797,14 @@ export default class Detail extends wepy.page {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 90px;
     background: #FFF;
     border-top: 1px solid #DDD;
+    display:flex;
 
     .comment-input {
-      width: 100%;
-      padding: 15px;
-      padding-right: 60px;
-      min-height: 50px;
-      max-height: 100px;
+      width: 78%;
+      padding-left: 15px;
+      height: 50px;
       font-size: 15px;
       color: #333;
       line-height: 20px;
@@ -816,20 +814,19 @@ export default class Detail extends wepy.page {
     .send-btn {
       position: absolute;
       top: 8px;
-      right: 15px;
+      right: 85px;
       width: 34px;
       height: 34px;
     }
 
     .isanonymous {
+      width: 22%;
       background: #FFF;
       padding: 5px;
-      overflow: hidden;
-      height: 40px;
+      margin-top:5px;
 
       .isanonymous-btn {
-        position: relative;
-        float: right;
+        position:absolute;
         width: 66px;
         height: 32px;
         padding: 0 8px;
