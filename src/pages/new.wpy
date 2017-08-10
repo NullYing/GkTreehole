@@ -60,7 +60,7 @@
       <view
         class="location"
         style="display:flex;">
-        <image class="location-icon" src="../assets/svgs/tag.svg"></image>
+        <image class="tag-icon" src="../assets/svgs/tag.svg"></image>
         <picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
           <text wx:if="{{index}}">当前分类：{{type[index]}}
           </text>
@@ -422,6 +422,13 @@ export default class NewBlog extends wepy.page {
       .location-icon {
         width: 32px;
         height: 32px;
+        vertical-align: middle;
+      }
+
+      .tag-icon {
+        width: 25px;
+        height: 25px;
+        margin: 5px;
         vertical-align: middle;
       }
 
