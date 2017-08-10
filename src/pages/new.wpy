@@ -269,7 +269,7 @@ export default class NewBlog extends wepy.page {
               wepy.hideToast()
               wepy.showModal({
                 title: '提示',
-                content: '服务器错误，上传图片失败。请重试~：）' + r.data.errmsg,
+                content: r.data.errmsg,
                 showCancel: false
               })
               return
