@@ -159,9 +159,9 @@ export default class Detail extends wepy.page {
 
   onShareAppMessage () {
     return {
-      title: `一条来着${this.blog.user.nickname}的情报 - 广科情报局`,
-      desc: '广科情报局~广科最实时的情报中心~',
-      path: '/pages/index'
+      title: `一条来着${this.blog.user.nickname}的情报`,
+      desc: '广科情报局~广科最实时的信息中心~',
+      path: `/pages/detail?id=${this.blog.id}`
     }
   }
 

@@ -155,7 +155,7 @@ export default class Index extends wepy.page {
 
   onShareAppMessage () {
     return {
-      title: '广科情报局',
+      title: '广科最实时的信息中心~',
       desc: '广科情报局首页~快来分享你的情报吧~',
       path: '/pages/index'
     }
