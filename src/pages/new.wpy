@@ -102,6 +102,7 @@ export default class NewBlog extends wepy.page {
     latitude: '',
     longitude: '',
     disabled: true,
+    tags: [],
     type: [],
     index: 0
   }
@@ -245,7 +246,7 @@ export default class NewBlog extends wepy.page {
         location: this.location,
         latitude: this.latitude,
         longitude: this.longitude,
-        type: this.index
+        type: this.tags[this.index]['tid']
       }
 
       // upload images
@@ -335,7 +336,10 @@ export default class NewBlog extends wepy.page {
       url: api.blog.typeList.url,
       method: api.blog.typeList.method
     })
-    this.type = r.data.data.type
+    this.tags = r.data.data.type
+    for(let tag in r.data.data.type){
+      this.type.push(r.data.data.type[tag]['tag'])
+    }
     this.$apply()
   }
 
