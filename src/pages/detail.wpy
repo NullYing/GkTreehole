@@ -721,6 +721,7 @@ export default class Detail extends wepy.page {
     width: 100%;
     background: #FFF;
     overflow: hidden;
+    margin-bottom: 30px;
 
     .comments-tabs {
       width: 100%;
@@ -828,12 +829,13 @@ export default class Detail extends wepy.page {
 
       .isanonymous-btn {
         position: relative;
-        float: left;
+        float: right;
         width: 66px;
         height: 32px;
-        padding: 0 6px;
+        padding: 0 8px;
         border-radius: 18px;
         transition: all 300ms ease;
+        margin-right:15rpx;
 
         text {
           color: #FFF;
