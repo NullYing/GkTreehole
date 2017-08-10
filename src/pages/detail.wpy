@@ -148,7 +148,7 @@ export default class Detail extends wepy.page {
     blog: {},
     loading: true,
     placeholder: '写点评论...',
-    focusComment: false,
+    focusComment: true,
     disable: true,
     comment: '',
     isAnonymous: false,
@@ -418,8 +418,8 @@ export default class Detail extends wepy.page {
      * 输入框失去焦点
      */
     inputBlur () {
-      this.focusComment = false
-      this.$apply()
+      // this.focusComment = false
+      // this.$apply()
     },
 
     async inputConfirm () {
@@ -475,7 +475,7 @@ export default class Detail extends wepy.page {
         this.replyTo = ''
         this.inputContent = ''
         this.disable = true
-        this.focusComment = false
+        this.focusComment = true
         this.isAnonymous = false
 
         // refetch data
