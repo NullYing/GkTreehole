@@ -296,11 +296,6 @@ export default class NewBlog extends wepy.page {
         })
         if (r.data.errorcode !== 0) {
           wepy.hideToast()
-          wepy.showModal({
-            title: '提示',
-            content: r.data.errmsg,
-            showCancel: false
-          })
           return
         }
       } catch (e) {

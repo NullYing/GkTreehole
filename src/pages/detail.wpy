@@ -834,8 +834,8 @@ export default class Detail extends wepy.page {
     .send-btn {
       width: 10%;
       height: 34px;
-      padding-top: 17rpx;
-      padding-left:5px;
+      padding-top: 9px;
+      padding-left: 5px;
     }
 
     .isanonymous {
