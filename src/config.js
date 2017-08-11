@@ -1,11 +1,12 @@
+const hostsfile = require('./hosts.js')
 // ENV
-const env = 'development' // 'development' or 'production'
+const env = hostsfile.env
 
 // WXAPP VERSION
 const version = 1.0
 
 // development and production host
-const hosts = require('./hosts.js').hosts
+const hosts = hostsfile.hosts
 
 // apis
 const api = {
