@@ -31,9 +31,14 @@
           <view class="list-user-nickname">
             <text class="nickname">{{ item.user.nickname }}</text>
             <image
+              wx:if="{{ item.user.gender }}"
+              class="gender"
+              src="{{ item.user.gender === '1' ? '../assets/svgs/male.svg' : '../assets/svgs/female.svg' }}">
+            </image>
+            <image
               wx:if="{{ item.user.isVerified }}"
               class="verify"
-              src="{{ item.user.gender === '1' ? '../assets/svgs/male.svg' : '../assets/svgs/female.svg' }}">
+              src="../assets/svgs/person-v.svg">
             </image>
           </view>
           <text class="time-and-from">{{ item.time + ' 来自' + item.device }}</text>
@@ -352,11 +357,19 @@ export default class Clist extends wepy.component {
             color: #333;
           }
 
+          .gender {
+            float: left;
+            width:26rpx;
+            height: 26rpx;
+            margin-top: 7px;
+          }
+
           .verify {
             float: left;
             width: 15px;
             height: 15px;
             margin-top: 6px;
+            margin-left: 10rpx;
           }
         }
 
