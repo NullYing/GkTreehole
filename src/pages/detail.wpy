@@ -15,9 +15,9 @@
           <view class="blog-user-nickname">
             <text class="nickname">{{ blog.user.nickname }}</text>
             <image
-              wx:if="{{ blog.user.gender }}"
-              class="gender"
-              src="{{ blog.user.gender === '1' ? '../assets/svgs/male.svg' : '../assets/svgs/female.svg' }}">
+              wx:if="{{ blog.user.isOffical }}"
+              class="offical"
+              src="{{ blog.user.isOffical ? '../assets/svgs/offical.svg' : '' }}">
             </image>
             <image
               wx:if="{{ blog.user.isVerified }}"
@@ -596,20 +596,21 @@ export default class Detail extends wepy.page {
             color: #333;
           }
 
-          .gender {
-            float: left;
-            width:26rpx;
-            height: 26rpx;
-            margin-top: 7px;
-          }
-
           .verify {
             float: left;
             width: 15px;
-            height: 15px;
+            height: 18px;
             margin-top: 6px;
-            margin-left: 10rpx;
+            margin-left: 5rpx;
           }
+
+          .offical {
+            float: left;
+            width: 40px;
+            height: 20px;
+            margin-top: 10rpx;
+          }
+
         }
 
         .time-and-from {
