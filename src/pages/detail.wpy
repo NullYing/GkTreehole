@@ -652,6 +652,7 @@ export default class Detail extends wepy.page {
         line-height: 28px;
         color: #333;
         text-align: justify;
+        word-wrap:break-word;
       }
 
       .blog-item-body-images {
