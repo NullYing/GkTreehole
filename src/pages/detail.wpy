@@ -119,6 +119,7 @@
         value="{{ inputContent }}"
         confirm-type="send"
         cursor-spacing="0"
+        maxlength="100"
         style="{{ !disable ? '' : 'width:78%' }}"/>
       <image
         class="send-btn"
