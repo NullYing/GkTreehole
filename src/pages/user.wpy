@@ -8,7 +8,7 @@
         <image src="{{ userinfo.avatarUrl }}" class="avatar-image"></image>
       </view>
       <view class="nickname">
-        <text>{{ userinfo.nickName }}</text>
+        <text>{{ userinfo.nickname }}</text>
       </view>
     </view>
     <view class="blogs">

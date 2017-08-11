@@ -182,7 +182,7 @@ export default class Clist extends wepy.component {
       try {
         const list = this.list
         let btn = [ '删除' ]
-        if (this.isAdmin) {
+        if (this.userinfo.isAdmin) {
           btn.push(`${!list[idx].isFixed ? '置顶' : '取消置顶'}`)
         }
         const { tapIndex } = await wepy.showActionSheet({
