@@ -1,5 +1,5 @@
 // ENV
-const env = 'development' // 'development' or 'production'
+const env = 'production' // 'development' or 'production'
 
 // WXAPP VERSION
 const version = 1.0

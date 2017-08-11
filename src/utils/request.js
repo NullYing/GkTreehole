@@ -13,8 +13,19 @@ export default async function request (options) {
   let response = await wepy.request(options)
 
   if (response.statusCode === 401 || (response.statusCode === 200 && response.data.errorcode === 401)) {
-    await interfaces.login()
-    return await request(options)
+    let errorNum = await wepy.getStorageSync('error_num')
+    if (errorNum && errorNum <= 3){
+      console.log(errorNum)
+      await interfaces.login()
+      await wepy.setStorageSync({
+        key: 'error_num',
+        data: errorNum + 1
+      })
+      return await request(options)
+    }
+    else {
+      return
+    }
   } else if (response.statusCode === 500) {
     wepy.showModal({
       title: '提示',
