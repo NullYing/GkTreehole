@@ -33,7 +33,7 @@
             <image
               wx:if="{{ item.user.isVerified }}"
               class="verify"
-              src="../assets/svgs/person-v.svg">
+              src="{{ item.user.gender === '1' ? '../assets/svgs/male.svg' : '../assets/svgs/female.svg' }}">
             </image>
           </view>
           <text class="time-and-from">{{ item.time + ' 来自' + item.device }}</text>

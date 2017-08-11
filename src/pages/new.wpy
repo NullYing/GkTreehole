@@ -337,7 +337,7 @@ export default class NewBlog extends wepy.page {
       method: api.blog.typeList.method
     })
     this.tags = r.data.data.type
-    for(let tag in r.data.data.type){
+    for (let tag in this.tags){
       this.type.push(r.data.data.type[tag]['tag'])
     }
     this.$apply()
