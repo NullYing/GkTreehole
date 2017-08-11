@@ -11,15 +11,15 @@ export default async function request (options) {
   }
 
   let response = await wepy.request(options)
-
+  console.log(response)
   if (response.statusCode === 401 || (response.statusCode === 200 && response.data.errorcode === 401)) {
-    let errorNum = await wepy.getStorageSync('error_num')
-    if (errorNum && errorNum <= 3){
-      console.log(errorNum)
+    let errorNum = await wepy.getStorageSync('error_num').num
+    console.log(errorNum)
+    if (errorNum <= 3){
       await interfaces.login()
       await wepy.setStorageSync({
         key: 'error_num',
-        data: errorNum + 1
+        data: { 'num' : errorNum + 1 }
       })
       return await request(options)
     }
