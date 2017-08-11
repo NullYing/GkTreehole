@@ -10,14 +10,13 @@
         <image src="../assets/svgs/close-ad.svg"></image>
       </view>
     </view>
-    <clist :list.sync="list" @reload.user="reloadData"></clist>
+    <clist :userinfo.sync="userinfo" :list.sync="list" @reload.user="reloadData"></clist>
   </view>
 </template>
 
 <script>
 import wepy from 'wepy'
 import clist from '../components/clist'
-import store from '../store'
 import { api } from '../config'
 import http from '../utils/request'
 
@@ -27,7 +26,7 @@ export default class List extends wepy.component {
     ads: [],
     ad: {},
     showAd: true,
-    userinfo: store.state.userinfo,
+    userinfo: wepy.getStorageSync('userinfo'),
     page: 1,
     reachEnd: false
   }
@@ -159,6 +158,7 @@ export default class List extends wepy.component {
       console.log(e)
     }
   }
+
 }
 </script>
 

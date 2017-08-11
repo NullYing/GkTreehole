@@ -42,10 +42,12 @@ const interfaces = {
       } else {
         userinfo = logininfo.data.data.wxinfo
       }
+
       await wepy.setStorage({
         key: '_session',
         data: logininfo.data.data.session_id
       })
+
       await wepy.setStorage({
         key: 'userinfo',
         data: userinfo

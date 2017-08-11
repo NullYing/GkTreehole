@@ -69,7 +69,7 @@
         <view
           @tap.stop="showMore({{ idx }}, {{ blog.id }})"
           class="blog-item-operation-more"
-          wx:if="{{ blog.user.isAdmin || blog.user.isAuthor }}">
+          wx:if="{{ isAdmin || blog.user.isAuthor }}">
           <image
             class="blog-item-operation-icon"
             src="../assets/svgs/more.svg"></image>
@@ -92,7 +92,7 @@
           wx:for-index="i"
           wx:key="{{ i }}"
           @tap.stop="showAction({{ comment.nickname }}, {{ comment.unionid }}, {{ comment.cid }}, {{ i }})"
-          data-isAdmin="{{ blog.user.isAdmin }}"
+          data-isAdmin="{{ isAdmin }}"
           data-isAuthor="{{ comment.isAuthor }}">
           <view class="comment-user-info">
             <image src="{{ comment.avatar ? comment.avatar :'../assets/svgs/avatar/avatar.svg' }}" class="comment-user-avatar"></image>
@@ -106,7 +106,7 @@
     </view>
 
     <!-- comment -->
-    <view class="comment" wx:if="{{ !loading }}">
+    <view class="comment" wx:if="{{ !loading && !disable_comment }}">
       <input
         class="comment-input"
         type="text"
@@ -160,7 +160,9 @@ export default class Detail extends wepy.page {
     isAnonymous: false,
     replyTo: '',
     inputContent: '',
-    isTest: true
+    isTest: true,
+    isAdmin: false,
+    disable_comment: false
   }
 
   onShareAppMessage () {
@@ -247,7 +249,7 @@ export default class Detail extends wepy.page {
     async showMore () {
       try {
         let btn = [ '删除' ]
-        if (this.blog.user.isAdmin) {
+        if (this.isAdmin) {
           btn.push(`${!this.blog.isFixed ? '置顶' : '取消置顶'}`)
         }
         const { tapIndex } = await wepy.showActionSheet({
@@ -329,9 +331,8 @@ export default class Detail extends wepy.page {
     async showAction (nickname, unionid, id, idx, e) {
       console.log(arguments)
       const itemList = [`回复 ${nickname}:`]
-      let isAdmin = e.currentTarget.dataset.isadmin
       let isAuthor = e.currentTarget.dataset.isauthor
-      if (isAdmin || isAuthor) {
+      if (this.isAdmin || isAuthor) {
         itemList.push('删除评论')
       }
 
@@ -504,6 +505,10 @@ export default class Detail extends wepy.page {
 
   async onLoad (options) {
     this.loading = true
+    this.isAdmin = this.$parent.globalData.userinfo.isAdmin
+    if (this.$parent.globalData.userinfo.isBlock) {
+      this.disable_comment = true
+    }
     this.$apply()
 
     await this.fetchDetail(options.id)
@@ -816,7 +821,7 @@ export default class Detail extends wepy.page {
     display:flex;
 
     .comment-input {
-      width: 68%;
+      width:270px;
       padding-left: 15px;
       height: 50px;
       font-size: 15px;
@@ -829,6 +834,7 @@ export default class Detail extends wepy.page {
       width: 10%;
       height: 34px;
       padding-top: 17rpx;
+      padding-left:5px;
     }
 
     .isanonymous {
