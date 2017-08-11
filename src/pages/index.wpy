@@ -120,6 +120,11 @@ export default class Index extends wepy.page {
         wepy.setStorageSync(`isInTest-${version}`, 'false')
       }
     }
+    // 初始化请求错误计数
+    await wepy.setStorageSync({
+      key: 'error_num',
+      data: 0
+    })
 
     try {
       const userinfo = await interfaces.login()
