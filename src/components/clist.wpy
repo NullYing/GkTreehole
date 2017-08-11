@@ -363,7 +363,7 @@ export default class Clist extends wepy.component {
             float: left;
             width: 40px;
             height: 20px;
-            margin-top: 10rpx;
+            margin-top: 5px;
           }
 
           .verify {
