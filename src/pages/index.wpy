@@ -161,11 +161,18 @@ export default class Index extends wepy.page {
     })
 
     this.unreadMessagesCount = notifications.data.data.unreadMessagesCount
-    if (this.unreadMessagesCount !== 0 && wepy.setTopBarText) {
-      wepy.setTopBarText({
-        text: `收到${this.unreadMessagesCount}条未读信息，点击查看`
-      })
+    if (wepy.canIUse('setTopBarText')) {
+      if (this.unreadMessagesCount !== 0) {
+        wepy.setTopBarText({
+          text: `收到${this.unreadMessagesCount}条未读信息，点击查看`
+        })
+      } else {
+        wepy.setTopBarText({
+          text: `广科情报局首页~广科最实时的信息中心~`
+        })
+      }
     }
+
     this.$apply()
   }
 
