@@ -168,7 +168,7 @@ export default class Index extends wepy.page {
         })
       } else {
         wepy.setTopBarText({
-          text: `广科情报局首页~广科最实时的信息中心~`
+          text: `广科情报局~广科最实时的信息中心~`
         })
       }
     }
