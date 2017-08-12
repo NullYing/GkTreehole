@@ -330,7 +330,6 @@ export default class Detail extends wepy.page {
      * @param {Number}  idx      操作对象的索引
      */
     async showAction (nickname, unionid, id, idx, e) {
-      console.log(arguments)
       const itemList = [`回复 ${nickname}:`]
       let isAuthor = e.currentTarget.dataset.isauthor
       if (this.isAdmin || isAuthor) {

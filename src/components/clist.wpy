@@ -234,7 +234,6 @@ export default class Clist extends wepy.component {
           }
         }
       } catch (e) {
-        console.log(e)
         console.log('User cancel')
       }
     },

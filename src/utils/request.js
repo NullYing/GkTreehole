@@ -15,7 +15,6 @@ export default async function request (options) {
     let errorNum = await wepy.getStorageSync('error_num').num
     if (errorNum <= 3){
       await interfaces.login()
-      console.log(errorNum)
       await wepy.setStorage({
         key: 'error_num',
         data: {'num':errorNum + 1}
