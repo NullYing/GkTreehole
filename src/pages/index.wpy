@@ -160,18 +160,22 @@ export default class Index extends wepy.page {
       method: api.notifications.count.method
     })
 
-    this.unreadMessagesCount = notifications.data.data.unreadMessagesCount
+    let unreadMessagesCount = notifications.data.data.unreadMessagesCount
+    console.log(this.unreadMessagesCount)
+    console.log(unreadMessagesCount)
     if (wepy.canIUse('setTopBarText')) {
-      if (this.unreadMessagesCount !== 0) {
+      if (unreadMessagesCount !== 0 && this.unreadMessagesCount !== unreadMessagesCount) {
         wepy.setTopBarText({
-          text: `收到${this.unreadMessagesCount}条未读信息，点击查看`
+          text: `收到${unreadMessagesCount}条未读信息，点击查看`
         })
-      } else {
+      } else if (this.unreadMessagesCount !== 0 && unreadMessagesCount === 0) {
         wepy.setTopBarText({
           text: `广科情报局~广科最实时的信息中心~`
         })
       }
     }
+
+    this.unreadMessagesCount = notifications.data.data.unreadMessagesCount
 
     this.$apply()
   }
