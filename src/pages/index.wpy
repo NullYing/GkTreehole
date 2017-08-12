@@ -161,6 +161,11 @@ export default class Index extends wepy.page {
     })
 
     this.unreadMessagesCount = notifications.data.data.unreadMessagesCount
+    if (this.unreadMessagesCount !== 0 && wepy.setTopBarText) {
+      wepy.setTopBarText({
+        text: `收到${this.unreadMessagesCount}条未读信息，点击查看`
+      })
+    }
     this.$apply()
   }
 
