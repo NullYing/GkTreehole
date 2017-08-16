@@ -113,7 +113,10 @@ export default class Index extends wepy.page {
     } else {
       const { data } = await http({
         url: api.configs.url,
-        method: api.configs.method
+        method: api.configs.method,
+        data: {
+          'version': version
+        }
       })
 
       if (data.data.isTest === false) {

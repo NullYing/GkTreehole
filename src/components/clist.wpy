@@ -6,7 +6,7 @@
       hover-class="newBtn-hover"
       hover-stay-time="200"
       class="newBtn"
-      wx:if="{{ !userinfo.isBlock }}">
+      wx:if="{{ !userinfo.isBlock && !isTest }}">
       <image src="../assets/svgs/write.svg" class="newBtn-icon"></image>
     </navigator>
     <view

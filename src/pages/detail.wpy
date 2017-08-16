@@ -106,7 +106,7 @@
     </view>
 
     <!-- comment -->
-    <view class="comment" wx:if="{{ !loading && !disable_comment }}">
+    <view class="comment" wx:if="{{ !loading && !disable_comment && !isTest }}">
       <input
         class="comment-input"
         type="text"
