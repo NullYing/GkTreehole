@@ -415,8 +415,11 @@ export default class NewBlog extends wepy.page {
 
     .location {
       float: left;
-      width: 250px;
+      width: 500rpx;
       height: 32px;
+      text-overflow:clip;
+      overflow:hidden;
+      white-space: nowrap;
 
       .location-icon {
         width: 32px;
