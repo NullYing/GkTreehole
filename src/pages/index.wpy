@@ -136,7 +136,7 @@ export default class Index extends wepy.page {
       if (userinfo.isBlock) {
         wepy.showModal({
           title: '提示',
-          content: `账号已被封禁，无法发布信息，仅允许查阅信息，封号原因请联系管理员`
+          content: "账号已被封禁，无法发布信息，仅允许查阅信息，申诉请加群：437249421"
         })
       }
     } catch (e) {
