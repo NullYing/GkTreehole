@@ -59,7 +59,7 @@ export default class User extends wepy.component {
 
   async onShow () {
     try {
-      this.userinfo = this.$parent.$parent.globalData.userinfo
+      this.userinfo = this.$parent.userinfo
 
       const { data } = await http({
         method: api.user.blog.method,
