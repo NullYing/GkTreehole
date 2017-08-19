@@ -51,6 +51,7 @@ export default class List extends wepy.component {
    * lifecycles hook
    */
   async onComponentLoad () {
+    this.userinfo = this.$parent.userinfo
     await this.loadData()
     this.$apply()
 

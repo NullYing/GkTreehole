@@ -55,7 +55,7 @@ export default class Index extends wepy.page {
   data = {
     tab: 0,
     unreadMessagesCount: 0,
-    userinfo: store.state.userinfo,
+    userinfo: {},
     tabs: ['list', 'message', 'user'],
     showTabs: false,
     logMessagesCount: 0
@@ -133,6 +133,7 @@ export default class Index extends wepy.page {
     try {
       const userinfo = await interfaces.login()
       this.$parent.globalData.userinfo = userinfo
+      this.userinfo = userinfo
       if (userinfo.isBlock) {
         wepy.showModal({
           title: '提示',
