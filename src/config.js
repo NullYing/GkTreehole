@@ -3,7 +3,7 @@ const hostsfile = require('./hosts.js')
 const env = hostsfile.env
 
 // WXAPP VERSION
-const version = 1.0
+const version = 1.1
 
 // development and production host
 const hosts = hostsfile.hosts
@@ -22,6 +22,10 @@ const api = {
     blog: {
       method: 'POST',
       url: '/user/blog'
+    },
+    ban: {
+      method: 'POST',
+      url: '/user/ban'
     }
   },
   blog: {

@@ -27,7 +27,8 @@ export default async function request (options) {
   } else if (response.statusCode === 500) {
     wepy.showModal({
       title: '提示',
-      content: `服务器错误，请截图本提示，发送到Q群：437249421。`
+      content: `服务器错误，请截图本提示，发送到Q群：437249421。`,
+      showCancel: false
     })
   } else {
     if (response.statusCode === 200 && response.data.errorcode !== 0 && response.data.errorcode !== 404) {
