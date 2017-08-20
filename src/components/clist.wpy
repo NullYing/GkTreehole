@@ -183,8 +183,8 @@ export default class Clist extends wepy.component {
         const list = this.list
         let btn = [ '删除' ]
         if (this.userinfo.isAdmin) {
-          btn.push(`${!list[idx].isFixed ? '置顶' : '取消置顶'}`)
           btn.push('封号')
+          btn.push(`${!list[idx].isFixed ? '置顶' : '取消置顶'}`)
         }
         const { tapIndex } = await wepy.showActionSheet({
           itemList: btn
@@ -214,6 +214,25 @@ export default class Clist extends wepy.component {
           }
         } else if (tapIndex === 1) {
           const status = await wepy.showModal({
+            title: `封号`,
+            content: `确定要对这个人执行封号？注意：封号后只能后台解封`,
+            cancelText: '取消',
+            cancelColor: '#666666',
+            confirmText: '确定',
+            confirmColor: '#3CC51F'
+          })
+
+          if (status.confirm) {
+            await http({
+              url: api.user.ban.url,
+              method: api.user.ban.method,
+              data: {
+                unionid: list[idx].user.unionid
+              }
+            })
+          }
+        } else if (tapIndex === 2) {
+          const status = await wepy.showModal({
             title: `${!list[idx].isFixed ? '置顶' : '取消置顶'}`,
             content: `确定要${!list[idx].isFixed ? '置顶' : '取消置顶'}这条情报？`,
             cancelText: '取消',
@@ -232,25 +251,6 @@ export default class Clist extends wepy.component {
             })
             this.$emit('reload')
             this.$apply()
-          }
-        } else if (tapIndex === 2) {
-          const status = await wepy.showModal({
-            title: `封号`,
-            content: `确定要对这个人执行封号？注意：封号后只能后台解封`,
-            cancelText: '取消',
-            cancelColor: '#666666',
-            confirmText: '确定',
-            confirmColor: '#3CC51F'
-          })
-
-          if (status.confirm) {
-            await http({
-              url: api.user.ban.url,
-              method: api.user.ban.method,
-              data: {
-                unionid: list[idx].user.unionid
-              }
-            })
           }
         }
       } catch (e) {
