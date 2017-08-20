@@ -18,8 +18,9 @@
       wx:for-item="item"
       wx:key="{{ idx }}"
       wx:for-index="idx"
-      @tap.stop="jumpTo({{ item.bid }}, {{ item.cid }})"
-      class="item {{ item.isUnread ? 'unread' : 'read' }}">
+      class="item"
+      @tap.stop="jumpTo({{ idx }}, {{ item.bid }}, {{ item.cid }})"
+      style="opacity: {{ item.isUnread ? '1' : '.6' }};">
       <view class="avatar">
         <image src="{{ item.user.avatar ? item.user.avatar : '../assets/svgs/avatar/avatar.svg' }}" class="avatar-image"></image>
       </view>
@@ -76,15 +77,19 @@ export default class Message extends wepy.component {
   methods = {
     /**
      * 跳转到情报并设置为已读
+     * @param {Number} idx 索引
      * @param {Number} bid blog id
      * @param {Number} cid comment id
      */
-    jumpTo (bid, cid) {
-      http({
-        url: `${api.notifications.read.url}/${cid}`,
-        method: api.notifications.read.method
-      })
-
+    async jumpTo (idx, bid, cid) {
+      if (this.list[idx].isUnread) {
+        http({
+          url: `${api.notifications.read.url}/${cid}`,
+          method: api.notifications.read.method
+        })
+        this.list[idx].isUnread = false
+        this.$apply()
+      }
       wepy.navigateTo({
         url: `/pages/detail?id=${bid}`
       })
@@ -180,10 +185,10 @@ export default class Message extends wepy.component {
 
   .item {
     float: left;
-    width: 100%;
     margin-bottom: 1px;
-    background: #FFF;
+    width: 100%;
     overflow: hidden;
+    background: #FFF;
 
     .avatar {
       float: left;
@@ -232,10 +237,6 @@ export default class Message extends wepy.component {
         word-wrap:break-word;
       }
     }
-  }
-
-  .read {
-    opacity: .6;
   }
 }
 </style>
